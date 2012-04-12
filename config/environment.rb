@@ -19,8 +19,7 @@ require 'gmail'
 
 #Amazon SES settings
 ActionMailer::Base.smtp_settings = {
-  :address => "localhost",
-	:port => 2525,
+  :address => "email-smtp.us-east-1.amazonaws.com",
   :authentication => :plain,
   :enable_starttls_auto => true,
   :domain => "stalkninja.com",
