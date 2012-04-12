@@ -7,4 +7,8 @@ default :from => 'StalkNinja project comments <comments@stalkninja.com>'
 
 	end
 	
+
+        def test(email)
+          mail(:to => email, :subject => "Hello world")
+        end
 end
