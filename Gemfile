@@ -12,7 +12,7 @@ gem 'ruby-gmail'
 gem 'sendgrid'
 gem 'therubyracer'
 gem 'execjs'
-
+gem 'high_voltage'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
