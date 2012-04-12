@@ -1,0 +1,27 @@
+%h3 Send private message to project creator
+%p.message Messages are private. They are being delivered to intended recipient through email. 
+- if @comments.count == 0
+	%h4 No messages submitted yet. Be the first one to comment.
+- else
+	%h4 In all #{@comments.count} message(s) have been submitted by #{@commenters_name}
+
+%br
+= form_for :comment, :url => comments_submit_path(:project_id => @project_id) do |f|
+	%table{:class => "form", :style => "text-align:left; width: 100%"} 
+		%tr
+			%td= f.label "Your name"
+			%td= f.text_field :codename
+		%tr.message
+			%td{:colspan => 2}= "it can be a codename"
+		%tr	
+			%td= f.label "Your email"
+			%td= f.text_field :email
+		%tr.message
+			%td{:colspan => 2}= "Specify email to get the reply to your message via email. Your email will not be visible to anyone including project creator"
+		%tr
+			%td{:colspan => 2}
+				= f.label "Your message to project creator"
+				%br
+				= f.text_area :message
+		%tr
+			%td= f.submit "Submit"
