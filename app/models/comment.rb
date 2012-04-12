@@ -29,7 +29,7 @@ class Comment < ActiveRecord::Base
 	end
 
 	def self.rake_fetch_email
-			gmail = Gmail.new('pocha@stalkninja.com','pocha320')
+			gmail = Gmail.new('comments@stalkninja.com','comments123')
 		
 			gmail.inbox.emails(:unread, :to => 'comments@stalkninja.com').each do |email|
 
