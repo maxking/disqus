@@ -40,18 +40,15 @@ class Comment < ActiveRecord::Base
         project_id = matches[2]
         codename = matches[1]
         startup = Startup.find_by_project_id(project_id)
-<<<<<<< HEAD
-        message = email.body.decoded
-=======
-        
-				message = email.multipart? ? (email.text_part ? email.text_part.body.decoded : nil) : email.body.decoded 
+#        message = email.body.decoded
+
+        message = email.multipart? ? (email.text_part ? email.text_part.body.decoded : nil) : email.body.decoded 
 #				
 #				if email.text_part.nil? 
 #				 message = email.body.raw_source.encoded
 #				else
 #					message = email.text_part.body
 #				end
->>>>>>> 75e0e49e6b4384abafc511bdc30924b72038a946
         
         case email.from[0]
         when startup.email

@@ -6,23 +6,23 @@ Disqus::Application.initialize!
 
 require 'gmail'
 
-#sendgrid settings
-#ActionMailer::Base.smtp_settings = {
-#  :address => "smtp.sendgrid.net",
-#	:port => 587,
-#  :authentication => :plain,
-#  :enable_starttls_auto => true,
-#  :domain => "stalkninja.com",
-#  :user_name => "stalkninja",
-#  :password => "stalkninja123"
-#}
-
-#Amazon SES settings
+#sendgrid settings for gmail
 ActionMailer::Base.smtp_settings = {
-  :address => "email-smtp.us-east-1.amazonaws.com",
-  :authentication => :login,
+  :address => "smtp.gmail.com",
+  :port => 587,
+  :authentication => :plain,
   :enable_starttls_auto => true,
   :domain => "stalkninja.com",
-  :user_name => "AKIAJULRMQUKNAJSJQFA",
-  :password => "AidZcHIcJzJHTJgzFLDSHtdtIioWqeSTqp7C1p8b/3g5"
+  :user_name => "comments",
+  :password => "comments123"
 }
+
+#Amazon SES settings
+#ActionMailer::Base.smtp_settings = {
+#  :address => "email-smtp.us-east-1.amazonaws.com",
+#  :authentication => :login,
+#  :enable_starttls_auto => true,
+#  :domain => "stalkninja.com",
+#  :user_name => "AKIAJULRMQUKNAJSJQFA",
+#  :password => "AidZcHIcJzJHTJgzFLDSHtdtIioWqeSTqp7C1p8b/3g5"
+#}
