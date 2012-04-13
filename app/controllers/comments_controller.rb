@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @comments = Comment.includes(:commenter).where("comments.commenter_id = commenters.id AND commenters.project_id = ?",params[:project_id]) 
     @project_id = params[:project_id]
     #@commenters_name = @commenters.map! { |c| c.codename}.join(",")
-    @commenters_name = Comment.includes(:commenter, :startup).where("comments.commenter_id = commenters.id AND comments.startup_id = startups.id AND commenters.project_id = ? AND startups.project_id = ?", params[:project_id], params[:project_id]).order("comments.id desc").map { |c| 
+    @commenters_name = Comment.includes(:commenter, :startup).where("comments.commenter_id = commenter.id AND comments.startup_id = startups.id AND commenter.project_id = ? AND startups.project_id = ?", params[:project_id], params[:project_id]).order("comments.id desc").map { |c| 
       if c.from == 'commenter'
         Commenter.find(c.commenter_id).codename
       else 

@@ -1,17 +1,17 @@
 class Comment < ActiveRecord::Base
-#  belongs_to :commenter
-#  belongs_to :startup
+  belongs_to :commenter
+  belongs_to :startup
   
   def self.rake_relay_email
     Comment.where("status = 'pending'").each do |comment|
-      subject = "New reply commenter #{Commenter.find(comment.commenter_id).codename} - Project #{Startup.find(comment.startup_id).project_id}"
-      Sendgrid.test("raj.abhilash1@gmail.com")
+     subject = "New reply commenter #{Commenter.find(comment.commenter_id).codename} - Project #{Startup.find(comment.startup_id).project_id}"
+
       retval = false
       case comment.from
       when "commenter"
-        Sendgrid.test("raj.abhilash1@gmail.com")
         startup = Startup.find(comment.startup_id)
         retval = Sendgrid.test(:to => startup.email, :subject => subject, :message => comment.message).deliver
+   
       when "admin"
         startup = Startup.find(comment.startup_id)
         commenter = Commenter.find(comment.commenter_id)
