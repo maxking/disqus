@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
-  belongs_to :commenter
-  belongs_to :startup
+#  belongs_to :commenter
+#  belongs_to :startup
   
   def self.rake_relay_email
     Comment.where("status = 'pending'").each do |comment|
