@@ -10,7 +10,7 @@ class Comment < ActiveRecord::Base
       case comment.from
       when "commenter"
         startup = Startup.find(comment.startup_id)
-        retval = Sendgrid.test(:to => startup.email, :subject => subject, :message => comment.message).deliver
+        retval = Sendgrid.relay_email(:to => startup.email, :subject => subject, :message => comment.message).deliver
    
       when "admin"
         startup = Startup.find(comment.startup_id)
