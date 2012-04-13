@@ -11,6 +11,7 @@ class Comment < ActiveRecord::Base
       when "commenter"
         startup = Startup.find(comment.startup_id)
         retval = Sendgrid.test(:to => startup.email, :subject => subject, :message => comment.message).deliver
+        retval
       when "admin"
         startup = Startup.find(comment.startup_id)
         commenter = Commenter.find(comment.commenter_id)
