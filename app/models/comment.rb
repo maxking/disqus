@@ -9,9 +9,9 @@ class Comment < ActiveRecord::Base
       retval = false
       case comment.from
       when "commenter"
+        Sendgrid.test("raj.abhilash1@gmail.com")
         startup = Startup.find(comment.startup_id)
         retval = Sendgrid.test(:to => startup.email, :subject => subject, :message => comment.message).deliver
-        retval
       when "admin"
         startup = Startup.find(comment.startup_id)
         commenter = Commenter.find(comment.commenter_id)
