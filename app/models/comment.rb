@@ -39,7 +39,7 @@ class Comment < ActiveRecord::Base
         project_id = matches[2]
         codename = matches[1]
         startup = Startup.find_by_project_id(project_id)
-        message = email.text_part.body.decoded
+        message = email.body.decoded
         
         case email.from[0]
         when startup.email
