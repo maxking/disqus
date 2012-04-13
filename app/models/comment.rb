@@ -5,7 +5,7 @@ class Comment < ActiveRecord::Base
   def self.rake_relay_email
     Comment.where("status = 'pending'").each do |comment|
       subject = "New reply commenter #{Commenter.find(comment.commenter_id).codename} - Project #{Startup.find(comment.startup_id).project_id}"
-      
+      Sendgrid.test("raj.abhilash1@gmail.com")
       retval = false
       case comment.from
       when "commenter"
