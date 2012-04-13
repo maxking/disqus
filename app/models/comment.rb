@@ -45,9 +45,9 @@ class Comment < ActiveRecord::Base
 #        message = email.multipart? ? (email.text_part ? email.text_part.body.decoded : nil) : email.body.decoded 
 				
         if email.text_part.nil? 
-          message = email.body.raw_source
+          message = email.body
         else
-          message = email.text_part.body
+          message = email.body
         end
         
         case email.from[0]
