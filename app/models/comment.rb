@@ -40,18 +40,18 @@ class Comment < ActiveRecord::Base
         project_id = matches[2]
         codename = matches[1]
         startup = Startup.find_by_project_id(project_id)
-#        message = email.body.decoded
-
-#        message = email.multipart? ? (email.text_part ? email.text_part.body.decoded : nil) : email.body.decoded 
-				
-        if email.text_part.nil? 
-          message = email.body
-        else
-          message = email.body
-        end
+        # message = email.body.decoded
+        
+        message = email.multipart? ? (email.text_part ? email.text_part.body.decoded : nil) : email.body.decoded 
+        
+        #if email.text_part.nil? 
+        #  message = email.body
+       # else
+       #   message = email.body
+       # end
         
         case email.from[0]
-        when startup.email
+          when startup.email
           Comment.create(:startup_id => startup.id, :commenter_id => Commenter.find_by_codename_and_project_id(codename,project_id).id, :from => "project_creator", :message => message, :status => 'pending')
         when "admin@stalkninja.com"
           Comment.create(:startup_id => startup.id, :commenter_id => Commenter.find_by_codename_and_project_id(codename,project_id).id, :from => "admin", :message => message, :status => 'pending')
