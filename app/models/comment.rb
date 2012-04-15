@@ -43,7 +43,7 @@ class Comment < ActiveRecord::Base
         # message = email.body.decoded
         
         message = email.multipart? ? (email.text_part ? email.text_part.body.decoded : nil) : email.body.decoded
-        message.gsub("&gt",">")
+        message.gsub("&gt;",">")
         
         #if email.text_part.nil? 
         #  message = email.body
