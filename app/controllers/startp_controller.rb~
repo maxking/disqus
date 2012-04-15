@@ -1,0 +1,3 @@
+class StartupController < ApplicationController
+  def create
+    Startup.create(:id => :id , :name => :name, :email => :email)

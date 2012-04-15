@@ -1,8 +1,11 @@
 Disqus::Application.routes.draw do
   
-	match "comments/list/:project_id" => "comments#list", :as => 'comments_list'
+  match "comments/list/:project_id" => "comments#list", :as => 'comments_list'
 
   match "comments/submit/:project_id" => "comments#submit", :via => 'post', :as => 'comments_submit'
+
+  post 'startup' => "startup#create"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
