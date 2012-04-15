@@ -42,7 +42,7 @@ class Comment < ActiveRecord::Base
         startup = Startup.find_by_project_id(project_id)
         # message = email.body.decoded
         
-        message = email.multipart? ? (email.text_part ? email.text_part.body.decoded : nil) : email.body.decoded 
+        message = email.multipart? ? (email.text_part ? email.text_part.body.decoded_html : nil) : email.body.decoded_html 
         
         #if email.text_part.nil? 
         #  message = email.body
