@@ -70,3 +70,4 @@ class Comment < ActiveRecord::Base
   end
   
 end
+#add a comment here
