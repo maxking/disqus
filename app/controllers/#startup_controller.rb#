@@ -1,0 +1,6 @@
+class StartupController < ApplicationController
+  def create
+ 
+    Startup.rake_create(:startup_id,:id,:name,:email)
+  end
+end
