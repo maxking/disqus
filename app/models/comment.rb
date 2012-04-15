@@ -42,7 +42,8 @@ class Comment < ActiveRecord::Base
         startup = Startup.find_by_project_id(project_id)
         # message = email.body.decoded
         
-        message = email.multipart? ? (email.text_part ? email.text_part.body.decoded('UTF-8') : nil) : email.body.decoded('UTF-8') 
+        message = email.multipart? ? (email.text_part ? email.text_part.body.decoded : nil) : email.body.decoded
+        message.gsub("&gt",">")
         
         #if email.text_part.nil? 
         #  message = email.body
